@@ -1,0 +1,41 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "zyon"
+version = "1.0.0"
+description = "Zyon — inteligencia no seu WhatsApp. Agente autonomo via Claude Code CLI + MBKCHAT."
+readme = "README.md"
+requires-python = ">=3.8"
+license = { file = "LICENSE" }
+authors = [{ name = "Geovani Junior", email = "sitecasadainfo2011@gmail.com" }]
+keywords = ["whatsapp", "claude", "agent", "wuzapi", "mbkchat", "cloudflared"]
+classifiers = [
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3 :: Only",
+  "Operating System :: OS Independent",
+]
+dependencies = []
+
+[project.optional-dependencies]
+dev = ["pytest>=7"]
+
+[project.urls]
+Homepage = "https://github.com/mbkautomacoes/zyon"
+Issues = "https://github.com/mbkautomacoes/zyon/issues"
+Changelog = "https://github.com/mbkautomacoes/zyon/blob/main/CHANGELOG.md"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["whatsapp_agent*"]
+
+[project.scripts]
+whatsapp-agent-doctor = "whatsapp_agent.doctor:main"
+whatsapp-agent-setup = "whatsapp_agent.setup_config:main"
+whatsapp-agent-update-webhooks = "whatsapp_agent.update_webhooks:main"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"

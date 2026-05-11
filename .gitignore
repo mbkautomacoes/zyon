@@ -1,0 +1,78 @@
+# Secrets / local config
+config.py
+
+# Runtime data
+messages_session*.jsonl
+processed_ids_session*.txt
+raw_debug.jsonl
+messages.jsonl
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.venv/
+venv/
+env/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editors
+.vscode/
+.idea/
+*.swp
+
+# MCP tooling caches
+.serena/
+.claude/
+.codex/
+docs/superpowers/
+
+# Build artefacts
+build/
+dist/
+*.egg-info/
+
+# Bootstrap runtime
+cloudflared.log
+
+# IDE
+.idea/
+*.iml
+
+# Logs
+*.log
+logs/
+
+# Tunnel runtime (ngrok legacy + cloudflared)
+ngrok.exe
+ngrok
+.ngrok2/
+ngrok_url.txt
+.pid.ngrok
+.pid.cloudflared
+.pid.webhook
+.pid.monitor*
+.webhook.pid
+
+# Media files (downloaded image/audio/video)
+media/
+
+# Beads task graph (per-developer)
+.beads/
+
+# Beads / Dolt files (added by bd init)
+.dolt/
+*.db
+.beads-credential-key
+
+# Landing page (deliverable separado, nao versionado)
+landing/
+
+# Docker (Trilha 3)
+.env
+docker-compose.override.yml
+cf-tunnel/
