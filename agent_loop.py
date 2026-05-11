@@ -78,11 +78,18 @@ def call_deepseek(user_message, history=None):
 
     resp = requests.post(DEEPSEEK_URL, headers=headers, json=payload, timeout=60)
     if resp.status_code != 200:
-        print(f"[agent] DeepSeek API error: {resp.status_code} {resp.text[:200]}", flush=True)
+        print(f"[agent] DeepSeek API error: {resp.status_code} {resp.text[:300]}", flush=True)
         return None
 
     data = resp.json()
-    return data.get("content", [{}])[0].get("text", "")
+    # DeepSeek may return thinking blocks before the text response
+    for block in data.get("content", []):
+        if block.get("type") == "text":
+            return block.get("text", "")
+        # Fallback: some blocks have 'text' without explicit type
+        if "text" in block:
+            return block["text"]
+    return ""
 
 
 def send_reply(phone, text, session):
