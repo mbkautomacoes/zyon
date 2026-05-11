@@ -195,6 +195,10 @@ class WebhookHandler(BaseHTTPRequestHandler):
                 if not text:
                     text = "[midia]"
 
+            # Loop guard: filter out messages containing our own signature
+            if text and "*Claude Code*" in text:
+                return None
+
             # Parse timestamp
             ts_raw = info.get("Timestamp", "")
             ts = 0
